@@ -139,6 +139,12 @@ const PATHS = {
     </>
   ),
   check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
+  contrato: (
+    <>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />
+      <path d="M14 3v5h5M9 13h6M9 17l1.5-1.5 1.5 1.5 3-3" />
+    </>
+  ),
 };
 
 export function Icon({ name, size = 20, strokeWidth = 1.8 }) {

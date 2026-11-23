@@ -8,8 +8,7 @@ import { useBloqueios } from '../lib/useBloqueios.js';
 import { useRevelar } from '../lib/useAnimacoes.js';
 import { proximaSelecao, SELECAO_VAZIA } from '../lib/selecao.js';
 import {
-  todayISO, validateSelection, formatPeriodo, formatBR, formatMoney, whatsappLink, mensagemReserva,
-  PRECO_DIA_SEMANA, PRECO_FIM_DE_SEMANA, MINIMO_NOITES,
+  todayISO, validateSelection, formatPeriodo, formatBR, whatsappLink, mensagemReserva, MINIMO_NOITES,
 } from '../../shared/booking.js';
 
 const externo = { target: '_blank', rel: 'noopener noreferrer' };
@@ -26,6 +25,7 @@ export function Home() {
     video: casa.videos.tour.titulo,
     comodidades: 'O que a casa oferece',
     local: 'Localização',
+    contrato: casa.contrato.titulo,
   };
 
   return (
@@ -54,6 +54,14 @@ export function Home() {
           <button type="button" className="botao botao-claro revelar" onClick={() => setPainel('comodidades')}>
             Ver tudo o que a casa oferece
           </button>
+          <button type="button" className="selo-contrato revelar" onClick={() => setPainel('contrato')}>
+            <span className="selo-icone"><Icon name="contrato" size={26} /></span>
+            <span className="selo-texto">
+              <strong>{casa.contrato.titulo}</strong>
+              <small>{casa.contrato.resumo}</small>
+            </span>
+            <Icon name="chev" size={18} strokeWidth={2.2} />
+          </button>
         </section>
 
         <Disponibilidade />
@@ -69,6 +77,7 @@ export function Home() {
         <section className="secao" aria-labelledby="antes-titulo">
           <h2 id="antes-titulo" className="titulo revelar">Antes de reservar</h2>
           <ul className="resumos">
+            <Resumo icon="contrato" titulo={casa.contrato.titulo} resumo="Toda reserva é formalizada com contrato." onAbrir={() => setPainel('contrato')} />
             {casa.detalhes.map((d) => (
               <Resumo key={d.id} icon={d.icon} titulo={d.titulo} resumo={d.resumo} onAbrir={() => setPainel(d.id)} />
             ))}
@@ -118,9 +127,11 @@ export function Home() {
       </footer>
 
       <div className="barra-reserva">
-        <div>
-          <small>a partir de</small>
-          <strong>{formatMoney(PRECO_DIA_SEMANA)} <span>/ noite</span></strong>
+        <div className="barra-info">
+          <span>
+            <strong>Reserva com contrato</strong>
+            <small>Valores pelo WhatsApp</small>
+          </span>
         </div>
         <a className="botao botao-reserva" href={whatsappLink(casa.whatsapp, casa.mensagemPadrao)} {...externo}>
           <Icon name="whats" size={20} />
@@ -162,6 +173,13 @@ export function Home() {
               Abrir no Google Maps
             </a>
           </>
+        )}
+        {painel === 'contrato' && (
+          <ul className="lista-check">
+            {casa.contrato.itens.map((item) => (
+              <li key={item}><Icon name="check" size={20} strokeWidth={2.2} />{item}</li>
+            ))}
+          </ul>
         )}
         {detalhe && (
           <ul className="lista-check">
@@ -254,10 +272,10 @@ function Disponibilidade() {
         {resultado?.ok ? (
           <div className="total">
             <div className="total-valor">
-              <span>{formatPeriodo(selecao.inicio, selecao.fim)}, {resultado.noites} noites</span>
-              <strong>{formatMoney(resultado.total)}</strong>
+              <strong>{formatPeriodo(selecao.inicio, selecao.fim)}</strong>
+              <span>{resultado.noites} noites</span>
             </div>
-            <p className="suave">Valor estimado. Feriados e taxa de limpeza são combinados na conversa.</p>
+            <p className="suave">Essas datas estão livres. Peça o valor pelo WhatsApp: feriados têm valores diferenciados.</p>
             <a className="botao botao-reserva" href={whatsappLink(casa.whatsapp, mensagemReserva(selecao.inicio, selecao.fim))} {...externo}>
               <Icon name="whats" size={22} />
               Pedir essas datas
@@ -265,8 +283,7 @@ function Disponibilidade() {
           </div>
         ) : (
           <p className="precos">
-            {formatMoney(PRECO_DIA_SEMANA)} por noite de domingo a quinta e {formatMoney(PRECO_FIM_DE_SEMANA)} na sexta e no sábado.
-            Mínimo de {MINIMO_NOITES} noites. Feriados têm valor combinado.
+            Mínimo de {MINIMO_NOITES} noites. Os valores são informados pelo WhatsApp, e feriados têm valores diferenciados.
           </p>
         )}
       </div>

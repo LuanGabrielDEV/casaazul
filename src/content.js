@@ -47,6 +47,17 @@ export const casa = {
   ],
   camas: '2 camas de casal, 2 de solteiro e colchões extras de casal e de solteiro.',
 
+  // Diferencial de confiança: toda reserva é feita com contrato.
+  contrato: {
+    titulo: 'Reserva com contrato',
+    resumo: 'Tudo o que foi combinado fica registrado por escrito.',
+    itens: [
+      'Toda reserva é formalizada com um contrato.',
+      'O que foi combinado pelo WhatsApp fica registrado por escrito.',
+      'Mais segurança para você e para a casa.',
+    ],
+  },
+
   // Resumos com botão para os detalhes
   detalhes: [
     {
@@ -59,13 +70,14 @@ export const casa = {
     {
       id: 'pagamento',
       icon: 'cartao',
-      titulo: 'Pagamento e cancelamento',
-      resumo: 'Pix ou cartão. Cancelamento em até 7 dias após o pagamento.',
+      titulo: 'Valores, pagamento e cancelamento',
+      resumo: 'Valores pelo WhatsApp. Pix ou cartão, com cancelamento em até 7 dias.',
       itens: [
+        'Os valores são informados pelo WhatsApp, de acordo com as datas e o número de pessoas.',
+        'Feriados têm valores diferenciados.',
         'Pix ou cartão de crédito (no cartão há acréscimo).',
-        'Taxa de limpeza opcional de R$ 90.',
+        'Taxa de limpeza opcional.',
         'Cancelamento em até 7 dias após o pagamento, conforme o Código de Defesa do Consumidor.',
-        'Valores de feriados são combinados pelo WhatsApp.',
       ],
     },
     {

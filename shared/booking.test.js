@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
-  addDays, nightsBetween, eachNight, isRangeFree, isNightBlocked, estimateTotal,
+  addDays, nightsBetween, eachNight, isRangeFree, isNightBlocked,
   validateSelection, todayISO, isISODate, formatBR, formatPeriodo, whatsappLink, mensagemReserva,
 } from './booking.js';
 
@@ -46,19 +46,10 @@ describe('disponibilidade', () => {
   });
 });
 
-describe('preço', () => {
-  it('cobra sexta e sábado como fim de semana', () => {
-    // 25/02/2027 é quinta: qui 319 + sex 445 + sáb 445
-    expect(estimateTotal('2027-02-25', '2027-02-28')).toBe(1209);
-    // seg e ter
-    expect(estimateTotal('2027-03-01', '2027-03-03')).toBe(638);
-  });
-});
-
 describe('validateSelection', () => {
   it('aceita período livre com o mínimo de diárias', () => {
     expect(validateSelection({ inicio: '2027-02-25', fim: '2027-02-28', bloqueios, hoje }))
-      .toEqual({ ok: true, noites: 3, total: 1209 });
+      .toEqual({ ok: true, noites: 3 });
   });
 
   it('recusa menos de 2 diárias', () => {
@@ -89,6 +80,7 @@ describe('WhatsApp', () => {
     const link = whatsappLink('5581987638385', mensagemReserva('2027-02-25', '2027-02-28'));
     expect(link).toContain('https://wa.me/5581987638385?text=');
     expect(decodeURIComponent(link)).toContain('de 25/02 a 28/02 (3 noites)');
+    expect(decodeURIComponent(link)).not.toMatch(/R\$/);
     expect(formatBR('2027-02-05')).toBe('05/02');
   });
 

@@ -353,9 +353,10 @@ a {
 }
 
 .total-valor strong {
-  font-size: 30px;
+  font-size: 22px;
+  line-height: 1.15;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .total-valor span {
@@ -708,6 +709,56 @@ a {
   background: var(--mare);
 }
 
+/* Selo de reserva com contrato */
+.selo-contrato {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--raio-grande);
+  background: var(--sol-claro);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--tinta);
+  cursor: pointer;
+}
+
+.selo-contrato:focus-visible {
+  outline: 3px solid var(--sol);
+  outline-offset: 2px;
+}
+
+.selo-icone {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: 14px;
+  background: var(--branco);
+  color: #b35f00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selo-texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.3;
+}
+
+.selo-texto strong {
+  font-size: 17px;
+}
+
+.selo-texto small {
+  font-size: 14px;
+  color: #6b4a1f;
+}
+
 .botao-azul {
   background: var(--azul);
   color: var(--branco);
@@ -800,26 +851,32 @@ a {
   z-index: 10;
 }
 
-.barra-reserva div {
+.barra-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.barra-info svg {
+  flex: none;
+  color: var(--azul);
+}
+
+.barra-info span {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
 }
 
-.barra-reserva small {
-  font-size: 13px;
-  color: var(--pedra);
-}
-
-.barra-reserva strong {
-  font-size: 21px;
+.barra-info strong {
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
-.barra-reserva strong span {
-  font-size: 14px;
-  font-weight: 600;
+.barra-info small {
+  font-size: 13px;
   color: var(--pedra);
 }
 

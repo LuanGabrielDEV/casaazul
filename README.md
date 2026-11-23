@@ -30,15 +30,13 @@ Cobrem as regras de reserva (`shared/booking.js`), a seleção de datas e a API 
 
 ## Regras definidas
 
-| Regra | Valor |
+| Regra | Como funciona |
 | --- | --- |
-| Diária de domingo a quinta | R$ 319 |
-| Diária de sexta e sábado | R$ 445 |
-| Mínimo | 2 diárias |
+| Valores | Não aparecem no site: são informados pelo WhatsApp |
+| Feriados | Valores diferenciados (aviso na página) |
+| Mínimo | 2 diárias (`MINIMO_NOITES` em `shared/booking.js`) |
 | Dia do check-out | Fica livre para nova entrada |
-| Feriados | Valor a combinar (aviso na página) |
-
-Para mudar valores, edite as constantes no topo de `shared/booking.js`.
+| Contrato | Toda reserva é feita com contrato (selo na página) |
 
 ## Publicar na Vercel
 
@@ -57,7 +55,7 @@ Para mudar valores, edite as constantes no topo de `shared/booking.js`.
 
 1. Fotos em destaque (deslizar para o lado), com botões para a galeria e o vídeo.
 2. Destaques da casa com ícones e botão "Ver tudo o que a casa oferece".
-3. Calendário de datas livres com estimativa de valor.
+3. Calendário de datas livres; o botão manda as datas escolhidas pelo WhatsApp.
 4. Tour em vídeo.
 5. "Antes de reservar": resumos com "Ver detalhes" (entrada e saída, pagamento e cancelamento, regras, localização, fotos e vídeos).
-6. Barra fixa com "a partir de R$ 319 / noite" e o botão Reservar.
+6. Selo "Reserva com contrato" nos destaques e na barra fixa com o botão Reservar.
