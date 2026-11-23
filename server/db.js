@@ -1,7 +1,7 @@
-// Acesso ao banco. Em produção usa o Postgres do Neon (DATABASE_URL).
+// Acesso ao banco. Em produção usa Postgres (Supabase ou Neon) pela DATABASE_URL.
 // Sem DATABASE_URL (desenvolvimento e testes), usa uma lista em memória
 // com os bloqueios informados no briefing.
-import { neon } from '@neondatabase/serverless';
+import postgres from 'postgres';
 
 const SEED = [
   { inicio: '2026-11-01', fim: '2027-02-01' }, // novembro/2026 a janeiro/2027 inteiros
@@ -33,8 +33,16 @@ function memoryStore(seed = SEED) {
   };
 }
 
-function neonStore(url) {
-  const sql = neon(url);
+// Uma conexão por instância da função; sem prepared statements, porque o
+// pooler de transação do Supabase (porta 6543) não os mantém entre pedidos.
+let cliente = null;
+function conectar(url) {
+  cliente ??= postgres(url, { prepare: false, max: 1, idle_timeout: 20, ssl: url.includes('localhost') ? false : 'require' });
+  return cliente;
+}
+
+function postgresStore(url) {
+  const sql = conectar(url);
   return {
     async listFrom(hoje) {
       return sql`select id, to_char(inicio, 'YYYY-MM-DD') as inicio, to_char(fim, 'YYYY-MM-DD') as fim from bloqueios where fim > ${hoje} order by inicio`;
@@ -55,5 +63,5 @@ function neonStore(url) {
 }
 
 export function createStore({ databaseUrl = process.env.DATABASE_URL, seed } = {}) {
-  return databaseUrl ? neonStore(databaseUrl) : memoryStore(seed);
+  return databaseUrl ? postgresStore(databaseUrl) : memoryStore(seed);
 }

@@ -20,5 +20,5 @@ if (!process.env.ADMIN_EMAIL) {
 
 const port = Number(process.env.PORT ?? 3001);
 createApp().listen(port, () => {
-  console.log(`API em http://localhost:${port} (${process.env.DATABASE_URL ? 'Neon' : 'memória'})`);
+  console.log(`API em http://localhost:${port} (${process.env.DATABASE_URL ? 'Postgres' : 'memória'})`);
 });

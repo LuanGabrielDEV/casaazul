@@ -1,4 +1,4 @@
--- Rode no SQL Editor do Neon uma única vez.
+-- Rode uma única vez no SQL Editor do Supabase (ou do Neon).
 create table if not exists bloqueios (
   id serial primary key,
   inicio date not null,  -- check-in (primeira noite ocupada)
@@ -8,6 +8,10 @@ create table if not exists bloqueios (
 );
 
 create index if not exists bloqueios_fim_idx on bloqueios (fim);
+
+-- Bloqueia o acesso pela API pública do Supabase (chaves anon/authenticated).
+-- O site acessa a tabela só pelo servidor, com a DATABASE_URL, que não passa por essas regras.
+alter table bloqueios enable row level security;
 
 -- Datas informadas no briefing (novembro/2026 a janeiro/2027 inteiros + fevereiro/2027)
 insert into bloqueios (inicio, fim) values

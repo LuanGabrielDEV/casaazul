@@ -6,7 +6,7 @@ Link na bio da Casa Azul (Ponta de Pedras) com calendário de disponibilidade e 
 
 - **Front:** React + Vite + React Router + react-day-picker
 - **Back:** Node.js + Express (função na Vercel em `api/index.js`)
-- **Banco:** Postgres no Neon (uma tabela, `bloqueios`)
+- **Banco:** Postgres no Supabase (uma tabela, `bloqueios`), via `postgres` (postgres.js)
 
 ## Rodar localmente
 
@@ -38,12 +38,20 @@ Cobrem as regras de reserva (`shared/booking.js`), a seleção de datas e a API 
 | Dia do check-out | Fica livre para nova entrada |
 | Contrato | Toda reserva é feita com contrato (selo na página) |
 
+## Banco no Supabase
+
+1. Crie um projeto no Supabase (região South America, São Paulo).
+2. No **SQL Editor**, rode o conteúdo de `db/schema.sql` (cria a tabela, liga o RLS e insere as datas do briefing).
+3. Em **Connect**, copie a URI do **Transaction pooler** (porta 6543) e troque `[YOUR-PASSWORD]` pela senha do banco.
+4. Na Vercel, cadastre essa URI como `DATABASE_URL` (Production e Preview) e faça um redeploy.
+
+O RLS ligado sem políticas bloqueia a API pública do Supabase; o site acessa a tabela só pelo servidor.
+
 ## Publicar na Vercel
 
-1. Crie um projeto no [Neon](https://neon.tech) e rode `db/schema.sql` no SQL Editor.
-2. Gere o hash da senha: `npm run hash-senha -- "senha-da-cliente"`.
-3. Importe o repositório na Vercel e cadastre `DATABASE_URL`, `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH` e `JWT_SECRET`.
-4. Deploy. O `vercel.json` manda `/api/*` para o Express e o resto para o React.
+1. Gere o hash da senha: `npm run hash-senha -- "senha-da-cliente"`.
+2. Importe o repositório na Vercel e cadastre `DATABASE_URL`, `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH` e `JWT_SECRET`.
+3. Deploy. O `vercel.json` manda `/api/*` para o Express e o resto para o React.
 
 ## Fotos e vídeos
 
