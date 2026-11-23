@@ -892,7 +892,9 @@ a {
   border: 0;
   width: min(100%, 480px);
   max-width: 100%;
-  max-height: 90vh;
+  /* svh = altura visível com as barras do navegador abertas (iPhone/Android) */
+  max-height: 85vh;
+  max-height: 85svh;
   border-radius: 24px 24px 0 0;
   background: var(--branco);
   color: var(--tinta);
@@ -916,10 +918,12 @@ a {
 .painel-conteudo {
   display: flex;
   flex-direction: column;
-  max-height: 90vh;
+  max-height: 85vh;
+  max-height: 85svh;
 }
 
 .painel-topo {
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -953,17 +957,18 @@ a {
   gap: 8px;
   border: 0;
   border-radius: 999px;
-  background: var(--tinta);
-  color: var(--branco);
+  background: var(--sol);
+  color: var(--tinta);
   font: inherit;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
   touch-action: manipulation;
+  box-shadow: 0 4px 14px rgba(255, 138, 0, 0.35);
 }
 
 .botao-fechar:hover {
-  background: var(--azul);
+  background: var(--sol-hover);
 }
 
 .botao-fechar:focus-visible {
