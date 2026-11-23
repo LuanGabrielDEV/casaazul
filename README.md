@@ -1,5 +1,7 @@
 # Casa Azul · Link na bio com calendário
 
+No ar: https://casaazul-wine.vercel.app · Painel: https://casaazul-wine.vercel.app/admin
+
 Link na bio da Casa Azul (Ponta de Pedras) com calendário de disponibilidade e painel para a cliente bloquear datas.
 
 - **Front:** React + Vite + React Router + react-day-picker
