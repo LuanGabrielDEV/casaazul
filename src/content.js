@@ -70,14 +70,13 @@ export const casa = {
     {
       id: 'pagamento',
       icon: 'cartao',
-      titulo: 'Valores, pagamento e cancelamento',
-      resumo: 'Valores pelo WhatsApp. Pix ou cartão, com cancelamento em até 7 dias.',
+      titulo: 'Valores e pagamento',
+      resumo: 'Valores pelo WhatsApp. Pix ou cartão de crédito.',
       itens: [
         'Os valores são informados pelo WhatsApp, de acordo com as datas e o número de pessoas.',
         'Feriados têm valores diferenciados.',
         'Pix ou cartão de crédito (no cartão há acréscimo).',
         'Taxa de limpeza opcional.',
-        'Cancelamento em até 7 dias após o pagamento, conforme o Código de Defesa do Consumidor.',
       ],
     },
     {

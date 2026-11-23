@@ -65,5 +65,5 @@ O RLS ligado sem políticas bloqueia a API pública do Supabase; o site acessa a
 2. Destaques da casa com ícones e botão "Ver tudo o que a casa oferece".
 3. Calendário de datas livres; o botão manda as datas escolhidas pelo WhatsApp.
 4. Tour em vídeo.
-5. "Antes de reservar": resumos com "Ver detalhes" (entrada e saída, pagamento e cancelamento, regras, localização, fotos e vídeos).
+5. "Antes de reservar": resumos com "Ver detalhes" (contrato, entrada e saída, valores e pagamento, regras, localização, fotos e vídeos).
 6. Selo "Reserva com contrato" nos destaques e na barra fixa com o botão Reservar.
