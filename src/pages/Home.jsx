@@ -91,7 +91,7 @@ export function Home() {
 
         <ul className="rodape-contatos revelar" aria-label="Contatos">
           <li>
-            <a href={whatsappLink(casa.whatsapp)} {...externo}>
+            <a href={whatsappLink(casa.whatsapp, casa.mensagemPadrao)} {...externo}>
               <span className="rodape-icone"><Icon name="whats" size={20} /></span>
               <span><small>WhatsApp</small>{casa.whatsappExibicao}</span>
             </a>
@@ -122,7 +122,7 @@ export function Home() {
           <small>a partir de</small>
           <strong>{formatMoney(PRECO_DIA_SEMANA)} <span>/ noite</span></strong>
         </div>
-        <a className="botao botao-reserva" href={whatsappLink(casa.whatsapp)} {...externo}>
+        <a className="botao botao-reserva" href={whatsappLink(casa.whatsapp, casa.mensagemPadrao)} {...externo}>
           <Icon name="whats" size={20} />
           Reservar
         </a>
@@ -156,7 +156,7 @@ export function Home() {
             <p className="texto">
               A casa fica na Praia do Sítio, em Ponta de Pedras, litoral norte de Pernambuco. São 3 minutos a pé até o mar.
             </p>
-            <img className="foto-larga" src="/fotos/orla.webp" alt="Árvore centenária na orla de Ponta de Pedras" loading="lazy" />
+            <img className="foto-larga" src="/fotos/orla-local.webp" alt="Árvore centenária e o mar na orla de Ponta de Pedras" loading="lazy" width="1200" height="900" />
             <a className="botao botao-azul" href={casa.maps} {...externo}>
               <Icon name="pin" size={20} />
               Abrir no Google Maps

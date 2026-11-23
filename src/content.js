@@ -4,6 +4,8 @@ export const casa = {
   local: 'Praia do Sítio, Ponta de Pedras (PE)',
   whatsapp: '5581987638385',
   whatsappExibicao: '(81) 98763-8385',
+  // Mensagem que já vem escrita ao tocar nos botões do WhatsApp (o botão do calendário manda as datas escolhidas).
+  mensagemPadrao: 'Olá! Vi a Casa Azul pelo link e gostaria de saber sobre disponibilidade e valores.',
   instagram: 'casaportemporada_pdp',
   maps: 'https://maps.app.goo.gl/TXELdw9cEiKrM9bC8',
   descricao: 'Desfrute de dias inesquecíveis, com conforto, tranquilidade e toda a magia de estar pertinho do mar.',
