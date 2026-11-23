@@ -139,10 +139,11 @@ export function Home() {
         </a>
       </div>
 
-      <Painel aberto={painel !== null} titulo={detalhe?.titulo ?? titulos[painel] ?? ''} onFechar={() => setPainel(null)}>
+      <Painel aberto={painel !== null} titulo={detalhe?.titulo ?? titulos[painel] ?? ''} onFechar={() => setPainel(null)}
+        telaCheia={painel === 'video'}>
         {painel === 'fotos' && <Galeria />}
         {painel === 'video' && (
-          <video className="video" controls autoPlay playsInline poster={casa.videos.tour.poster}>
+          <video className="video-cheio" controls autoPlay playsInline poster={casa.videos.tour.poster}>
             <source src={casa.videos.tour.src} type="video/mp4" />
           </video>
         )}
