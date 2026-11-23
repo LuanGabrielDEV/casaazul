@@ -47,6 +47,15 @@ Cobrem as regras de reserva (`shared/booking.js`), a seleção de datas e a API 
 
 O RLS ligado sem políticas bloqueia a API pública do Supabase; o site acessa a tabela só pelo servidor.
 
+## Mapa (Google Maps)
+
+O painel "Localização" mostra um mapa com estilo próprio e o marcador da casa. Sem a chave, aparece a foto da orla.
+
+1. No [Google Cloud Console](https://console.cloud.google.com/), crie um projeto, ative o faturamento e ative a **Maps JavaScript API**.
+2. Em **Credenciais**, crie uma chave de API e restrinja: tipo **Sites** com `https://casaazul-wine.vercel.app/*` e `http://localhost:5173/*`; API: só Maps JavaScript API.
+3. Na Vercel, cadastre `VITE_GOOGLE_MAPS_API_KEY` com a chave e faça um redeploy (ela entra no build).
+4. Ajuste `coordenadas` em `src/content.js` com a latitude e a longitude exatas da casa.
+
 ## Publicar na Vercel
 
 1. Gere o hash da senha: `npm run hash-senha -- "senha-da-cliente"`.

@@ -8,6 +8,10 @@ export const casa = {
   mensagemPadrao: 'Olá! Vi a Casa Azul pelo link e gostaria de saber sobre disponibilidade e valores.',
   instagram: 'casaportemporada_pdp',
   maps: 'https://maps.app.goo.gl/TXELdw9cEiKrM9bC8',
+  // Ponto do marcador no mapa. PROVISÓRIO: centro aproximado de Ponta de Pedras.
+  // Troque pelas coordenadas exatas da casa (no Google Maps, toque e segure no
+  // local e copie os dois números que aparecem, ex.: -7.62531, -34.81002).
+  coordenadas: { lat: -7.6253, lng: -34.8103 },
   descricao: 'Desfrute de dias inesquecíveis, com conforto, tranquilidade e toda a magia de estar pertinho do mar.',
 
   fotos: [

@@ -3,6 +3,7 @@ import { Icon } from '../components/Icon.jsx';
 import { Calendario } from '../components/Calendario.jsx';
 import { Destaque } from '../components/Destaque.jsx';
 import { Painel } from '../components/Painel.jsx';
+import { Mapa, mapaDisponivel } from '../components/Mapa.jsx';
 import { casa } from '../content.js';
 import { useBloqueios } from '../lib/useBloqueios.js';
 import { useRevelar } from '../lib/useAnimacoes.js';
@@ -165,13 +166,19 @@ export function Home() {
         )}
         {painel === 'local' && (
           <>
-            <p className="texto">
-              A casa fica na Praia do Sítio, em Ponta de Pedras, litoral norte de Pernambuco. São 3 minutos a pé até o mar.
-            </p>
-            <img className="foto-larga" src="/fotos/orla-local.webp" alt="Árvore centenária e o mar na orla de Ponta de Pedras" loading="lazy" width="1200" height="900" />
+            <div className="local-cabecalho">
+              <strong>Praia do Sítio, Ponta de Pedras</strong>
+              <span>Pernambuco, Brasil</span>
+            </div>
+            {mapaDisponivel ? (
+              <Mapa lat={casa.coordenadas.lat} lng={casa.coordenadas.lng} titulo={casa.nome} />
+            ) : (
+              <img className="foto-larga" src="/fotos/orla-local.webp" alt="Árvore centenária e o mar na orla de Ponta de Pedras" loading="lazy" width="1200" height="900" />
+            )}
+            <p className="texto">A casa fica no litoral norte de Pernambuco, a 3 minutos a pé do mar.</p>
             <a className="botao botao-azul" href={casa.maps} {...externo}>
               <Icon name="pin" size={20} />
-              Abrir no Google Maps
+              Ver rota no Google Maps
             </a>
           </>
         )}
